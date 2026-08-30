@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@import "../styles/01-tokens.css";
+@import "../styles/02-base.css";
+@import "../styles/04-shared-ui.css";
+@import "../styles/05-layout.css";
+@import "../styles/06-loader.css";
+@import "../styles/07-navigation.css";
+@import "../styles/08-sections.css";
+@import "../styles/09-modals.css";
+@import "../styles/10-footer.css";
+@import "../styles/11-animations.css";
+@import "../styles/12-responsive.css";

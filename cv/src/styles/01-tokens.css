@@ -1,0 +1,61 @@
+/* tokens */
+
+:root {
+  --background: #f7f5ee;
+  --background-deep: #ece7da;
+  --panel: #ffffff;
+  --panel-rgb: 255, 255, 255;
+  --surface: rgba(255, 255, 255, 0.76);
+  --surface-strong: rgba(255, 255, 255, 0.92);
+  --foreground: #17211b;
+  --foreground-rgb: 23, 33, 27;
+  --muted: rgba(23, 33, 27, 0.66);
+  --muted-soft: rgba(23, 33, 27, 0.46);
+  --line: rgba(23, 33, 27, 0.1);
+  --line-strong: rgba(23, 33, 27, 0.16);
+  --accent: #2f765b;
+  --accent-strong: #164c38;
+  --accent-soft: #e5f0e9;
+  --accent-ink: #ffffff;
+  --accent-rgb: 47, 118, 91;
+  --employed: #315f72;
+  --employed-rgb: 49, 95, 114;
+  --cool-rgb: 62, 126, 151;
+  --warm-rgb: 206, 149, 74;
+  --shadow: rgba(36, 46, 37, 0.12);
+  --shadow-strong: rgba(36, 46, 37, 0.2);
+  --bg-x: 68vw;
+  --bg-y: 26vh;
+  --bg-scroll: 0%;
+  --bg-shift: 0px;
+}
+
+:root[data-theme="dark"] {
+  --background: #0f1412;
+  --background-deep: #090d0b;
+  --panel: #111713;
+  --panel-rgb: 17, 23, 19;
+  --surface: rgba(255, 255, 255, 0.046);
+  --surface-strong: rgba(255, 255, 255, 0.075);
+  --foreground: #f3efe6;
+  --foreground-rgb: 243, 239, 230;
+  --muted: rgba(243, 239, 230, 0.62);
+  --muted-soft: rgba(243, 239, 230, 0.46);
+  --line: rgba(255, 255, 255, 0.085);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --accent: #a8d8b3;
+  --accent-strong: #d5eacb;
+  --accent-soft: rgba(168, 216, 179, 0.13);
+  --accent-ink: #111712;
+  --accent-rgb: 168, 216, 179;
+  --employed: #9cc7d2;
+  --employed-rgb: 156, 199, 210;
+  --cool-rgb: 140, 181, 190;
+  --warm-rgb: 209, 172, 111;
+  --shadow: rgba(0, 0, 0, 0.2);
+  --shadow-strong: rgba(0, 0, 0, 0.42);
+}
+
+:root[data-theme="dark"] .dynamic-background {
+  opacity: 0.74;
+}

@@ -1,0 +1,128 @@
+/* footer */
+
+.site-footer {
+  scroll-margin-top: 5rem;
+  border-top: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, rgba(var(--accent-rgb), 0.1), transparent 46%, rgba(var(--cool-rgb), 0.08)),
+    rgba(var(--panel-rgb), 0.36);
+  backdrop-filter: blur(10px);
+}
+
+.site-footer h2 {
+  margin: 0.85rem 0 0;
+  max-width: 760px;
+  color: var(--foreground);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 950;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.site-footer-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  max-width: 760px;
+  margin-top: 1rem;
+}
+
+.contact-reveal-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(var(--panel-rgb), 0.58);
+  color: var(--foreground);
+  font: inherit;
+  padding: 0.85rem;
+  text-align: left;
+  text-decoration: none;
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    transform 220ms ease;
+}
+
+.contact-reveal-card:hover {
+  border-color: rgba(var(--accent-rgb), 0.4);
+  background: rgba(var(--accent-rgb), 0.11);
+  transform: translateY(-2px);
+}
+
+.contact-reveal-icon {
+  display: grid;
+  height: 40px;
+  width: 40px;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(var(--accent-rgb), 0.13);
+  color: var(--accent-strong);
+}
+
+.contact-reveal-copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.15rem;
+}
+
+.contact-reveal-copy small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.contact-reveal-copy strong {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+.contact-reveal-copy strong.is-blurred {
+  filter: blur(5px);
+  user-select: none;
+}
+
+.contact-reveal-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent-strong);
+  font-size: 0.82rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.site-footer-meta {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.site-footer-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 850;
+}
+
+.site-footer-meta svg {
+  color: var(--accent);
+}
+
+.site-footer-copy {
+  margin: 2rem auto 0;
+  max-width: 80rem;
+  color: var(--muted-soft);
+  font-size: 0.85rem;
+  font-weight: 760;
+}

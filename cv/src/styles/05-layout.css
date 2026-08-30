@@ -1,0 +1,61 @@
+/* layout */
+
+.dynamic-background {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(42rem 32rem at var(--bg-x) var(--bg-y), rgba(var(--accent-rgb), 0.18), transparent 62%),
+    radial-gradient(34rem 26rem at calc(100% - var(--bg-x)) calc(34vh + var(--bg-shift)), rgba(var(--cool-rgb), 0.12), transparent 64%),
+    linear-gradient(120deg, rgba(var(--warm-rgb), 0.08), transparent 42%, rgba(var(--accent-rgb), 0.07));
+  opacity: 0.92;
+  transition: background 180ms linear, opacity 240ms ease;
+}
+
+.dynamic-background::before {
+  content: "";
+  position: absolute;
+  inset: -18%;
+  background:
+    linear-gradient(rgba(var(--foreground-rgb), 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--foreground-rgb), 0.032) 1px, transparent 1px);
+  background-size: 88px 88px;
+  mask-image: radial-gradient(circle at var(--bg-x) var(--bg-y), black, transparent 60%);
+  transform: translate3d(0, calc(var(--bg-shift) * -0.16), 0);
+}
+
+.dynamic-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(var(--panel-rgb), 0.58), transparent 36%, rgba(var(--panel-rgb), 0.38)),
+    radial-gradient(circle at 50% var(--bg-scroll), rgba(var(--accent-rgb), 0.08), transparent 28rem);
+}
+
+.page-shell {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+main > section,
+main > footer,
+main > div:not(.dynamic-background):not(.modal-backdrop):not(.page-loader) {
+  position: relative;
+  z-index: 1;
+}
+
+.page-shell > :not(.page-loader) {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 720ms ease,
+    transform 720ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.page-shell.is-ready > :not(.page-loader) {
+  opacity: 1;
+  transform: translateY(0);
+}
