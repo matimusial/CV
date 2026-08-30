@@ -2,14 +2,11 @@ import { httpGetJson } from "@/services/http";
 import type { ProjectId } from "@/data/site";
 
 interface ProjectImagesResponse {
-  images: string[];
+  images: Partial<Record<ProjectId, string[]>>;
 }
 
 export async function getProjectImages(projectId: ProjectId, signal?: AbortSignal): Promise<string[]> {
-  const response = await httpGetJson<ProjectImagesResponse>(
-    `/api/project-images?projectId=${encodeURIComponent(projectId)}`,
-    signal,
-  );
+  const response = await httpGetJson<ProjectImagesResponse>("/api/project-images", signal);
 
-  return response.images;
+  return response.images[projectId] ?? [];
 }

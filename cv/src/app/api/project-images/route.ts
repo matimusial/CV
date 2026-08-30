@@ -1,51 +1,54 @@
 import { readdir } from "node:fs/promises";
 import path from "node:path";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { projectIds, projectMeta } from "@/data/site";
 import type { ProjectId } from "@/data/site";
 
+export const dynamic = "force-static";
 const imageExtensions = new Set([".avif", ".gif", ".jpeg", ".jpg", ".png", ".webp"]);
 const imageNameCollator = new Intl.Collator("en", { numeric: true, sensitivity: "base" });
 const projectImagesRoot = path.resolve(process.cwd(), "public", "images", "projects");
 
-export async function GET(request: NextRequest) {
-  const projectId = request.nextUrl.searchParams.get("projectId");
+export async function GET() {
+  const projectImageEntries = await Promise.all(
+    projectIds.map((projectId) => getProjectImageEntry(projectId)),
+  );
 
-  if (!isProjectId(projectId)) {
-    return NextResponse.json({ images: [] }, { status: 400 });
-  }
+  return NextResponse.json({ images: Object.fromEntries(projectImageEntries) });
+}
 
+async function getProjectImageEntry(projectId: ProjectId): Promise<readonly [ProjectId, string[]]> {
+  const images = await getProjectImages(projectId);
+
+  return [projectId, images];
+}
+
+async function getProjectImages(projectId: ProjectId): Promise<string[]> {
   const imageDirectory = projectMeta[projectId].imageDirectory;
 
   if (!imageDirectory) {
-    return NextResponse.json({ images: [] }, { headers: { "Cache-Control": "no-store" } });
+    return [];
   }
 
   const directoryPath = path.resolve(process.cwd(), "public", imageDirectory.replace(/^\/+/, ""));
 
   if (!directoryPath.startsWith(`${projectImagesRoot}${path.sep}`)) {
-    return NextResponse.json({ images: [] }, { status: 400 });
+    return [];
   }
 
   try {
     const directoryEntries = await readdir(directoryPath, { withFileTypes: true });
-    const images = directoryEntries
+    return directoryEntries
       .filter((entry) => entry.isFile() && isImageFile(entry.name))
       .sort((left, right) => imageNameCollator.compare(left.name, right.name))
       .map((entry) => `${imageDirectory}/${encodeURIComponent(entry.name)}`);
-
-    return NextResponse.json({ images }, { headers: { "Cache-Control": "no-store" } });
   } catch (error) {
     if (isFileSystemError(error) && error.code === "ENOENT") {
-      return NextResponse.json({ images: [] }, { headers: { "Cache-Control": "no-store" } });
+      return [];
     }
 
-    return NextResponse.json({ images: [] }, { status: 500 });
+    throw error;
   }
-}
-
-function isProjectId(value: string | null): value is ProjectId {
-  return value !== null && projectIds.some((projectId) => projectId === value);
 }
 
 function isImageFile(fileName: string) {
