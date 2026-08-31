@@ -66,13 +66,11 @@ export function ProjectsSection({ onOpenProject }: ProjectsSectionProps) {
         <div className="flex h-full flex-col justify-between">
           <div>
             <div className="project-card-topline">
-              <p className="project-card-kicker">{LL.projectsUi.caseStudy()}</p>
               <span className="project-category-pill">{category.badge()}</span>
             </div>
             <h3 className="project-card-title">{project.title()}</h3>
             <p className="project-card-text">{project.description()}</p>
           </div>
-          <div className="project-tags">{meta.tags.map((tag) => renderProjectTag(tag))}</div>
           <span className="project-open">
             {LL.projectsUi.open()}
             <ArrowRight size={17} />
@@ -80,10 +78,6 @@ export function ProjectsSection({ onOpenProject }: ProjectsSectionProps) {
         </div>
       </button>
     );
-  }
-
-  function renderProjectTag(tag: string) {
-    return <span className="tag-pill" key={tag}>{tag}</span>;
   }
 
   return (

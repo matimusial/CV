@@ -84,8 +84,7 @@
   padding: 0.5rem 0.75rem;
 }
 
-.info-kicker,
-.project-card-kicker {
+.info-kicker {
   font-size: 0.875rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -107,10 +106,6 @@
   margin-top: 1rem;
   color: var(--muted);
   line-height: 1.75;
-}
-
-.project-card-kicker {
-  color: var(--muted-soft);
 }
 
 .project-card-title {

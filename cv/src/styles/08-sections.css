@@ -14,6 +14,16 @@
   max-width: 46rem;
 }
 
+.about-status-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.about-mobile-cv {
+  display: none;
+}
+
 .about-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -119,6 +129,10 @@
 .about-cover-column {
   display: grid;
   gap: 1rem;
+}
+
+.about-mobile-cover {
+  display: none;
 }
 
 .about-cover {
@@ -286,7 +300,7 @@
 .project-card-topline {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 0.75rem;
 }
 
@@ -307,13 +321,6 @@
   position: absolute;
   inset: 0 0 auto;
   height: 3px;
-}
-
-.project-tags {
-  margin-top: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
 }
 
 .project-open {
@@ -382,6 +389,18 @@
 .timeline-project-link:hover {
   border-color: var(--accent-strong);
   color: var(--foreground);
+}
+
+.timeline-organization-link {
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.timeline-organization-link:hover {
+  border-color: rgba(var(--accent-rgb), 0.55);
+  color: var(--accent-strong);
 }
 
 .language-skill-card {

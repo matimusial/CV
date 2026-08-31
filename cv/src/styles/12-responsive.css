@@ -128,8 +128,38 @@
     font-size: 0.82rem !important;
   }
 
+  .about-mobile-cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
+    border-radius: 8px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-size: 0.82rem;
+    font-weight: 900;
+    padding: 0.7rem 0.85rem;
+    transition:
+      background 220ms ease,
+      transform 220ms ease;
+  }
+
+  .about-mobile-cv:hover {
+    background: var(--accent-strong);
+    transform: translateY(-2px);
+  }
+
   .about-title {
     font-size: clamp(2.55rem, 8vw, 4.7rem) !important;
+  }
+
+  .about-mobile-cover {
+    display: block;
+    margin-top: 1.35rem;
+  }
+
+  .about-cover-column {
+    display: none;
   }
 
   .about-headline {
@@ -453,10 +483,6 @@
   .project-card-text {
     margin-top: 0.85rem;
     line-height: 1.6;
-  }
-
-  .project-tags {
-    margin-top: 1rem;
   }
 
   .timeline::before {

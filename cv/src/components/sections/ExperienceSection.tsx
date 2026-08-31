@@ -1,4 +1,4 @@
-import { experienceIds } from "@/data/site";
+import { experienceCompanies, experienceIds } from "@/data/site";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { useI18nContext } from "@/i18n/client";
 import type { ExperienceId, ProjectId } from "@/data/site";
@@ -14,6 +14,9 @@ export function ExperienceSection({ onOpenProject }: ExperienceSectionProps) {
 
   function renderTimelineItem(id: ExperienceId, index: number) {
     const item = LL.experience[id];
+    const company = experienceCompanies[id];
+    const title = item.title();
+    const titleWithoutCompany = title.replace(company.name, "");
 
     return (
       <article
@@ -24,7 +27,17 @@ export function ExperienceSection({ onOpenProject }: ExperienceSectionProps) {
       >
         <span className="timeline-dot" />
         <p className="info-kicker">{item.period()}</p>
-        <h3 className="info-title">{item.title()}</h3>
+        <h3 className="info-title">
+          {titleWithoutCompany}
+          <a
+            className="timeline-organization-link"
+            href={company.url}
+            rel="noreferrer"
+            target="_blank"
+          >
+            {company.name}
+          </a>
+        </h3>
         <p className="info-text">{renderExperienceText(item.text())}</p>
       </article>
     );

@@ -1,23 +1,39 @@
-import { ArrowRight, MapPin } from "lucide-react";
-import { available } from "@/config";
-import { heroImageUrl, profile } from "@/data/site";
+import { ArrowRight, Download, MapPin } from "lucide-react";
+import { cvDownloadUrl, heroImageUrl, profile } from "@/data/site";
 import { useI18nContext } from "@/i18n/client";
 
-export function AboutSection() {
+interface AboutSectionProps {
+  available: boolean;
+}
+
+export function AboutSection({ available }: AboutSectionProps) {
   const { LL } = useI18nContext();
 
   return (
     <section id="profile" className="about-section relative min-h-screen px-5 pb-20 pt-24 sm:px-8 lg:pt-28">
       <div className="about-layout content-container relative flex items-center gap-1">
         <div data-reveal className="about-copy reveal w-full lg:w-[70%] lg:shrink-0">
-          <p className={available ? "about-eyebrow" : "about-eyebrow is-employed"}>
-            <span />
-            {available ? LL.hero.availability.available() : LL.hero.availability.employed()}
-          </p>
+          <div className="about-status-row">
+            <p className={available ? "about-eyebrow" : "about-eyebrow is-employed"}>
+              <span />
+              {available ? LL.hero.availability.available() : LL.hero.availability.employed()}
+            </p>
+
+            {available ? (
+              <a className="about-mobile-cv" download href={cvDownloadUrl}>
+                <Download size={16} />
+                {LL.nav.cv()}
+              </a>
+            ) : null}
+          </div>
 
           <h1 className="about-title">
             <span>{profile.name}</span>
           </h1>
+
+          <div className="about-mobile-cover">
+            <ProfileCover />
+          </div>
 
           <p className="about-headline">{LL.sections.profileTitle()}</p>
           <ul className="about-intro">
@@ -47,14 +63,20 @@ export function AboutSection() {
         </div>
 
         <div data-reveal className="about-cover-column reveal w-full lg:flex-1">
-          <article className="about-cover">
-            <div
-              className="about-cover-image"
-              style={{ backgroundImage: `url(${heroImageUrl})` }}
-            />
-          </article>
+          <ProfileCover />
         </div>
       </div>
     </section>
+  );
+}
+
+function ProfileCover() {
+  return (
+    <article className="about-cover">
+      <div
+        className="about-cover-image"
+        style={{ backgroundImage: `url(${heroImageUrl})` }}
+      />
+    </article>
   );
 }

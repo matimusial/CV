@@ -62,7 +62,6 @@ export const pl = {
     stackTitle: "Technologie, których używam",
   },
   projectsUi: {
-    caseStudy: "Case study",
     open: "Zobacz szczegóły",
     categories: {
       commercial: {
@@ -79,7 +78,7 @@ export const pl = {
     eacloud: {
       title: "eAuditor Cloud",
       description:
-        "Chmurowa platforma ITSM/ITAM/ITOM do inwentaryzacji, monitorowania, bezpieczeństwa i zdalnego zarządzania infrastrukturą IT.",
+        "Chmurowa platforma do inwentaryzacji, monitorowania, bezpieczeństwa i zdalnego zarządzania infrastrukturą IT.",
       overview:
         "Jestem jednym z głównych frontend developerów eAuditor Cloud i odpowiadam za około 60% obecnej warstwy frontendowej aplikacji. W Svelte i TypeScript tworzę kluczowe widoki, stworzyłem frontend modułu zdalnego pulpitu WebRTC oraz rozwijam własne mechanizmy interfejsu, formularze, walidację i integracje z REST API.",
       responsibilities: {
@@ -352,7 +351,6 @@ export const en: Translation = {
     stackTitle: "Technologies I work with",
   },
   projectsUi: {
-    caseStudy: "Case study",
     open: "View details",
     categories: {
       commercial: {
@@ -369,7 +367,7 @@ export const en: Translation = {
     eacloud: {
       title: "eAuditor Cloud",
       description:
-        "A cloud ITSM/ITAM/ITOM platform for inventory, monitoring, security and remote IT infrastructure management.",
+        "A cloud platform for inventory, monitoring, security and remote IT infrastructure management.",
       overview:
         "I am one of the primary frontend developers of eAuditor Cloud and am responsible for approximately 60% of its current frontend layer. Using Svelte and TypeScript, I build key views, created the frontend for the WebRTC remote desktop module, and develop custom UI mechanisms, forms, validation and REST API integrations.",
       responsibilities: {

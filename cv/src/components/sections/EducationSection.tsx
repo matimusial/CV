@@ -1,4 +1,4 @@
-import { educationIds } from "@/data/site";
+import { educationIds, educationInstitutionUrls } from "@/data/site";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { useI18nContext } from "@/i18n/client";
 import type { EducationId } from "@/data/site";
@@ -20,7 +20,14 @@ export function EducationSection() {
         <p className="info-kicker">{educationItem.period()}</p>
         <h3 className="info-title">{educationItem.title()}</h3>
         <p className="mt-2 text-sm font-semibold text-[var(--muted)] sm:text-base">
-          {educationItem.institution()}
+          <a
+            className="timeline-organization-link"
+            href={educationInstitutionUrls[id]}
+            rel="noreferrer"
+            target="_blank"
+          >
+            {educationItem.institution()}
+          </a>
         </p>
         <ul className="info-text list-disc space-y-2 pl-5 marker:text-[var(--accent)]">
           <li>{educationItem.details.item1()}</li>

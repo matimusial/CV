@@ -35,6 +35,11 @@ export interface ContactForm {
   name: string;
 }
 
+interface ExperienceCompany {
+  name: string;
+  url: string;
+}
+
 export interface NavigationItem {
   href: string;
   id: "profile" | "projects" | "experience" | "education" | "stack" | "contact";
@@ -45,8 +50,7 @@ export interface ProjectMeta {
   category: ProjectCategoryId;
   externalUrl: string;
   imageDirectory: string | null;
-  tags: string[];
-  technologies: string[];
+  technologies: ReadonlyArray<StackId>;
 }
 
 export interface ProjectGroup {
@@ -134,48 +138,60 @@ export const projectMeta: Record<ProjectId, ProjectMeta> = {
     category: "commercial",
     externalUrl: "https://www.eauditor.eu/cloud",
     imageDirectory: "/images/projects/eac",
-    tags: ["Svelte", "TypeScript", "REST API"],
-    technologies: ["Svelte", "TypeScript", "REST API", "Git", "Figma"],
+    technologies: ["svelte", "typescript", "restapi", "git", "figma"],
   },
   eauditor: {
     accent: "from-stone-200 to-amber-200",
     category: "commercial",
     externalUrl: "https://www.eauditor.eu/",
     imageDirectory: "/images/projects/ea",
-    tags: ["Svelte", "Spring Boot", "MS SQL"],
-    technologies: ["Svelte", "TypeScript", "REST API", "PostgreSQL", "MS SQL", "Java Spring Boot", "Git"],
+    technologies: ["svelte", "typescript", "restapi", "postgres", "mssql", "spring", "git"],
   },
   expensetracker: {
     accent: "from-sky-200 to-emerald-200",
     category: "hobby",
     externalUrl: "https://github.com/matimusial/Smart-Expense-Tracker",
     imageDirectory: "/images/projects/tracker",
-    tags: ["React", "Spring Boot", "Machine Learning"],
-    technologies: ["React", "TypeScript", "REST API", "PostgreSQL", "Java Spring Boot", "Python", "FastAPI", "Machine Learning", "Git"],
+    technologies: ["react", "typescript", "restapi", "postgres", "spring", "python", "fastapi", "machineLearning", "git"],
   },
   emailservice: {
     accent: "from-cyan-200 to-lime-200",
     category: "hobby",
     externalUrl: "https://github.com/matimusial/EmailService",
     imageDirectory: "/images/projects/emailservice",
-    tags: ["Svelte", "Spring Boot", "PostgreSQL"],
-    technologies: ["Svelte", "TypeScript", "REST API", "PostgreSQL", "Java Spring Boot", "Git"],
+    technologies: ["svelte", "typescript", "restapi", "postgres", "spring", "git"],
   },
   cv: {
     accent: "from-emerald-200 to-violet-200",
     category: "hobby",
     externalUrl: "https://github.com/matimusial/CV",
     imageDirectory: null,
-    tags: ["Next.js", "React", "TypeScript"],
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "typesafe-i18n", "Git"],
+    technologies: ["react", "typescript", "tailwind", "git"],
   },
 };
 
 export const experienceIds = ["fullstack", "juniorFrontend", "internship", "digeInternship", "logicNetInternship"] as const;
 export type ExperienceId = (typeof experienceIds)[number];
 
+const btcCompany: ExperienceCompany = { name: "BTC", url: "https://btc.com.pl/" };
+const digeCompany: ExperienceCompany = { name: "Dige", url: "https://dige.rs/" };
+const logicNetCompany: ExperienceCompany = { name: "Logic Net", url: "https://logicnet.pl/" };
+
+export const experienceCompanies: Record<ExperienceId, ExperienceCompany> = {
+  fullstack: btcCompany,
+  juniorFrontend: btcCompany,
+  internship: btcCompany,
+  digeInternship: digeCompany,
+  logicNetInternship: logicNetCompany,
+};
+
 export const educationIds = ["engineering", "technicalSchool"] as const;
 export type EducationId = (typeof educationIds)[number];
+
+export const educationInstitutionUrls = {
+  engineering: "https://www.wi.zut.edu.pl/pl/",
+  technicalSchool: "https://technikumcyfrowe.pl/",
+} as const satisfies Record<EducationId, string>;
 
 export const languageSkillIds = ["englishB2"] as const;
 export type LanguageSkillId = (typeof languageSkillIds)[number];

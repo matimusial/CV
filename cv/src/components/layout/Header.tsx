@@ -8,9 +8,13 @@ import type { Locale } from "@/i18n/translations";
 
 type Theme = "light" | "dark";
 
+interface HeaderProps {
+  available: boolean;
+}
+
 const isHeaderContactButtonVisible = false;
 
-export function Header() {
+export function Header({ available }: HeaderProps) {
   const { LL, locale, setLocale } = useI18nContext();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [activeNavigationId, setActiveNavigationId] = useState<NavigationItem["id"]>("profile");
@@ -144,14 +148,16 @@ export function Header() {
             </a>
           ) : null}
 
-          <a
-            className="header-write-button inline-flex items-center gap-2"
-            download
-            href={cvDownloadUrl}
-          >
-            <Download size={16} />
-            {LL.nav.cv()}
-          </a>
+          {available ? (
+            <a
+              className="header-write-button inline-flex items-center gap-2"
+              download
+              href={cvDownloadUrl}
+            >
+              <Download size={16} />
+              {LL.nav.cv()}
+            </a>
+          ) : null}
 
         </div>
       </nav>

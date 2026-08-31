@@ -6,7 +6,7 @@ import { useI18nContext } from "@/i18n/client";
 import { ModalFrame } from "@/components/common/ModalFrame";
 import { projectMeta } from "@/data/site";
 import { getProjectImages } from "@/services/projects";
-import type { ProjectId } from "@/data/site";
+import type { ProjectId, StackId } from "@/data/site";
 
 interface ProjectModalProps {
   onClose: () => void;
@@ -56,8 +56,8 @@ export function ProjectModal({ onClose, projectId }: ProjectModalProps) {
     return () => controller.abort();
   }, [hasImageGallery, projectId]);
 
-  function renderTechnology(technology: string) {
-    return <span className="tag-pill" key={technology}>{technology}</span>;
+  function renderTechnology(technology: StackId) {
+    return <span className="tag-pill" key={technology}>{LL.stack[technology].name()}</span>;
   }
 
   function renderResponsibility(item: string) {

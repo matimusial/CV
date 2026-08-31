@@ -23,10 +23,18 @@ import type { ContactStatus } from "@/components/modals/ContactModal";
 import { baseLocale } from "@/i18n/translations";
 import type { Locale } from "@/i18n/translations";
 
-export function CvPage() {
+interface CvPageProps {
+  available: boolean;
+}
+
+interface CvPageContentProps {
+  available: boolean;
+}
+
+export function CvPage({ available }: CvPageProps) {
   return (
     <TypesafeI18n locale={baseLocale}>
-      <CvPageContent />
+      <CvPageContent available={available} />
     </TypesafeI18n>
   );
 }
@@ -46,7 +54,7 @@ interface ContactPayload {
   submittedAt: string;
 }
 
-function CvPageContent() {
+function CvPageContent({ available }: CvPageContentProps) {
   const { LL, locale } = useI18nContext();
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectId | null>(null);
@@ -155,8 +163,8 @@ function CvPageContent() {
     <main className={`page-shell min-h-screen overflow-hidden ${isPageReady ? "is-ready" : ""}`}>
       {isPageIntroVisible ? <PageLoader /> : null}
       <DynamicBackground />
-      <Header />
-      <AboutSection />
+      <Header available={available} />
+      <AboutSection available={available} />
       <ProjectsSection onOpenProject={openProjectModal} />
       <StackSection onOpenProject={openProjectModal} />
       <ExperienceSection onOpenProject={openProjectModal} />
