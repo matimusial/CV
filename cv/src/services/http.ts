@@ -31,14 +31,12 @@ export async function httpPostJson<TPayload, TResponse = void>(
   return readJsonResponse<TResponse>(response);
 }
 
-async function readJsonResponse<TResponse>(response: Response): Promise<TResponse> {
-  if (response.status === 204 || !isJsonResponse(response)) {
+async function readJsonResponse<TResponse>(
+    response: Response
+): Promise<TResponse> {
+  if (response.status === 204) {
     return undefined as TResponse;
   }
 
   return (await response.json()) as TResponse;
-}
-
-function isJsonResponse(response: Response) {
-  return response.headers.get("content-type")?.includes("application/json") ?? false;
 }
