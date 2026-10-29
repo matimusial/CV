@@ -238,8 +238,8 @@ export const pl = {
       both: "Komercyjnie + hobby",
     },
     commercialExperience: {
-      fiveMonths: "5 mies.",
-      oneYearThreeMonths: "1 rok 3 mies.",
+      fiveMonths: "10 mies.",
+      oneYearThreeMonths: "1 rok 10 mies.",
     },
     groups: {
       frontend: {
@@ -527,8 +527,8 @@ export const en: Translation = {
       both: "Commercial + hobby",
     },
     commercialExperience: {
-      fiveMonths: "5 mo.",
-      oneYearThreeMonths: "1 yr 3 mo.",
+      fiveMonths: "10 mo.",
+      oneYearThreeMonths: "1 yr 10 mo.",
     },
     groups: {
       frontend: {
